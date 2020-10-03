@@ -17,7 +17,6 @@ public class ConfigurationData
     // configuration data
     static float paddleMoveUnitsPerSecond = 10;
     static float ballImpulseForce = 200;
-    static float ballLifeTime = 10;
 
     #endregion
 
@@ -39,10 +38,6 @@ public class ConfigurationData
     public float BallImpulseForce
     {
         get { return ballImpulseForce; }    
-    }
-    public float BallLifeTime
-    {
-        get { return ballLifeTime; }
     }
 
     #endregion
