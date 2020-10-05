@@ -12,13 +12,13 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartMoving();
-        //start move timer
-        /*
-        moveTimer.gameObject.AddComponent<Timer>();
-        moveTimer.Duration = 1;
+       // StartMoving();
+
+        //Start move timer
+        moveTimer = gameObject.AddComponent<Timer>();
+        moveTimer.Duration = ConfigurationUtils.BallLifeTime;
         moveTimer.Run();
-        */
+
         //start death timer
         deathTimer = gameObject.AddComponent<Timer>();
         deathTimer.Duration = ConfigurationUtils.BallLifeTime;
@@ -29,18 +29,20 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //move when time is up
+        if (moveTimer.Finished)
+        {
+            moveTimer.Stop();
+            StartMoving();
+        }
         //die when time is up
         if (deathTimer.Finished)
         {
+            Camera.main.GetComponent<BallSpawner>();
             Destroy(gameObject);
         }
     }
-    public void SetDirection(Vector2 direction)
-    {
-        Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
-        float speed = rb2d.velocity.magnitude;
-        rb2d.velocity = direction * speed;
-    }
+  
     public void StartMoving()
     {
         float angle = -90 * Mathf.Deg2Rad;
@@ -48,5 +50,11 @@ public class Ball : MonoBehaviour
             ConfigurationUtils.BallImpulseForce * Mathf.Cos(angle),
             ConfigurationUtils.BallImpulseForce * Mathf.Sin(angle));
         GetComponent<Rigidbody2D>().AddForce(force);
+    }
+    public void SetDirection(Vector2 direction)
+    {
+        Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+        float speed = rb2d.velocity.magnitude;
+        rb2d.velocity = direction * speed;
     }
 }

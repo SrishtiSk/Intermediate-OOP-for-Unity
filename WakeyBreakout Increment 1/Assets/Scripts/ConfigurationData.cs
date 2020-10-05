@@ -15,9 +15,13 @@ public class ConfigurationData
     const string ConfigurationDataFileName = "ConfigurationData.csv";
 
     // configuration data
-    static float paddleMoveUnitsPerSecond = 10;
-    static float ballImpulseForce = 200;
-    static float ballLifeTime = 10;
+    float paddleMoveUnitsPerSecond = 10;
+    float ballImpulseForce = 200;
+    float ballLifeTime = 10;
+    float minSpawnSeconds = 5;
+    float maxSpawnSeconds = 10;
+    
+
 
     #endregion
 
@@ -43,6 +47,14 @@ public class ConfigurationData
     public float BallLifeTime
     {
         get { return ballLifeTime; }
+    }
+    public float MinSpawnSeconds
+    {
+        get { return minSpawnSeconds; }
+    }
+    public float MaxSpawnSeconds
+    {
+        get { return maxSpawnSeconds; }
     }
 
     #endregion

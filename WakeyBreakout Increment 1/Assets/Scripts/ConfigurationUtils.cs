@@ -28,8 +28,18 @@ public static class ConfigurationUtils
     {
         get { return configurationData.BallLifeTime; }
     }
+
+    public static float MinSpawnSeconds
+    {
+        get { return configurationData.MinSpawnSeconds; }
+    }
+
+    public static float MaxSpawnSeconds
+    {
+        get { return configurationData.MaxSpawnSeconds; }
+    }
     #endregion
-    
+
     /// <summary>
     /// Initializes the configuration utils
     /// </summary>
